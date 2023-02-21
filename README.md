@@ -69,7 +69,7 @@ This is where stuff gets ~~complicated~~ fun.
 15. The Monster's traits are generated.
   - The list of possible traits is pulled from all monsters in the SRD. Some traits that I felt were too specific have been left out, and some traits have had their text changed to be more "general".
   - For thematic reasons, some traits have been restricted by creature type. For example, a Beast will not generate with Limited Telepathy or Sense Magic.
-  - For balance, traits have been arbitrarily assigned a value of High, Medium, or Low. At challenge rating 1, a Monster will have one trait chosen from the Low list. At challenge rating 20, a Monster will have the following: three Low traits, two Medium traits, one High trait.
+  - For balance, traits have been arbitrarily assigned a value of High, Medium, or Low. At challenge rating 1, a Monster will have one trait chosen from the Low list. At challenge rating 20, a Monster will have the following: two Low traits, two Medium traits, one High trait.
   - Monsters will always have a minimum of one trait at challenge rating 1, and a maximum of 6 traits at challenge rating 20 (in addition to thematic creature-specific traits).
   - Creature types with thematic creature-specific traits (ex: Devil's Sight, Divine Awareness, Swarm) will get those in addition to the traits above.
   - Creature types with mechanical creature-specific traits (ex: Oozes, Elementals) will select from those lists before selecting from the Low, Medium, and High lists.
