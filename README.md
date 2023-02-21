@@ -10,63 +10,63 @@ This work includes material taken from the System Reference Document 5.1 (“SRD
 
 The web interface provided at ionme.dev for using this tool, and any other ionme.dev assets that are not part of this repository are the intellectual property of ionme.dev.
 
-The python code included in this project (except where the above apply) is completely free for you to use.
+The python code included in this project (except where the above apply) is completely free for you to use, with no restrictions.
 
 # How it works
 
 ## Generating Attributes
 
-1. The basic characteristics of the Monster are determined by the end user.
+**1. The basic characteristics of the Monster are determined by the end user.**
   - These basic characteristics are: challenge rating, creature type, and whether or not the creature has legendary actions.
   - Challenge rating supports integer values, and has been sanity tested up to challenge rating 25. Higher numbers shouldn't break the code, but you might see really weird stuff.
 
-2. Based on the creature type, the Monster is assigned an archetype.
+**2. Based on the creature type, the Monster is assigned an archetype.**
   - The list of archetypes follows: strength user, dexterity user, intelligence user, charisma user, wisdom user
   - Basically: Martial, martial, caster, caster, caster
   - For thematic reasons, certain creature types may only be generated with certain archetypes. For example, a Beast may be a strength user or a dexterity user; while a Monstrosity may be any archetype.
  
-3. Based on the assigned archetype, an ability score array is generated.
+**3. Based on the assigned archetype, an ability score array is generated.**
   - This ability score array is influenced by the overall challenge rating, as well as the creature's type.
 
-4. The Monster's size is determined.
+**4. The Monster's size is determined.**
   - For creatures that tend to have less variance in size (e.g. Humanoids, Celestials, Fey), the size is chosen from a weighted list of valid sizes.
   - For other creatures, size is taken as a function of challenge rating and creature type. For example, a low challenge rating Beast will be more likely to generate as Small or Medium while a higher challenge rating Beast will be more likely to generate as a larger size class.
 
-5. The Monster's alignment is determined based on the creature type.
+**5. The Monster's alignment is determined based on the creature type.**
   - Examples: a Celestial will be any Good alignment; a Fey will be any non-lawful alignment; a Beast will be unaligned.
 
-6. Based on the creature type, a value called "itemuser" is populated with either "yes" or "no".
-- Examples: Beasts will never use weapons or armor, so itemuser will be "no". Humanoids are wildly diverse, with some using natural weapons (claws, bites, etc.) and others using manufactured weapons (swords, bows, so on).
+**6. Based on the creature type, a value called "itemuser" is populated with either "yes" or "no".**
+- Examples: Beasts will never use weapons or armor, so itemuser will be "no". Humanoids are more diverse, with some using natural weapons (claws, bites, etc.) and others using manufactured weapons (swords, bows, so on).
 
-7. The Monster's armor class is determined.
+**7. The Monster's armor class is determined.**
   - If the creature is not an item user, the armor class is based on target challenge rating.
   - If the creature is an item user, its ability scores are analyzed to determine the best piece of armor for it to wear.
 
-8. The Monster's movement types and speed are determined.
+**8. The Monster's movement types and speed are determined.**
   - This is based on creature type and size, and additional movement types (ex: fly, burrow) are weighted by challenge rating.
 
-9. The Monster's element is determined.
+**9. The Monster's element is determined.**
   - This is largely important for Oozes, Elementals, and Dragons. This is mainly used to determine their damage types and resistances.
 
-10. The Monster's languages are determined.
+**10. The Monster's languages are determined.**
   - This is a function of the creature's intelligence and creature type.
 
-11. The Monster's saving throws are determined.
+**11. The Monster's saving throws are determined.**
   - Initial saves are based on archetype and creature type.
   - Additional saves are pulled at random from the remaining ability scores, as a function of challenge rating.
 
-12. The Monster's proficient skills are determined based on its archetype.
+**12. The Monster's proficient skills are determined based on its archetype.**
   - The list of skills is arbitrarily small - effectively, it's only skills that I think may be useful in combat.
 
-13. The Monster's senses are determined based on its creature type.
+**13. The Monster's senses are determined based on its creature type.**
 
-14. The Monster's resistances and vulnerabilities are determined based on its creature type and, when applicable, element.
+**14. The Monster's resistances and vulnerabilities are determined based on its creature type and, when applicable, element.**
   - Ex: Oozes are always immune to being knocked prone. Elementals are always immune to their element type.
 
 ## Generating Traits, Reactions, and Actions.
 This is where stuff gets ~~complicated~~ fun.
 
-15. The Monster's traits are generated.
+**15. The Monster's traits are generated.**
   - The list of possible traits is pulled from all monsters in the SRD. Some traits that I felt were too specific have been left out, and some traits have had their text changed to be more "general".
   - For thematic reasons, some traits have been restricted by creature type. For example, a Beast will not generate with Limited Telepathy or Sense Magic.
   - For balance, traits have been arbitrarily assigned a value of High, Medium, or Low. At challenge rating 1, a Monster will have one trait chosen from the Low list. At challenge rating 20, a Monster will have the following: two Low traits, two Medium traits, one High trait.
@@ -75,11 +75,11 @@ This is where stuff gets ~~complicated~~ fun.
   - Creature types with mechanical creature-specific traits (ex: Oozes, Elementals) will select from those lists before selecting from the Low, Medium, and High lists.
   - For balance purposes, item users above challenge rating 6 will always have one trait replaced with Brute or Magic Weapons.
 
-16. The Monster may have a reaction generated.
+**16. The Monster may have a reaction generated.**
   - For thematic reasons, Oozes above Large size will always have Split as a reaction.
   - Otherwise, a Monster has a 20% chance to have one of its Low traits replaced with a reaction.
 
-17. The Monster's Actions are generated.
+**17. The Monster's Actions are generated.**
   - For thematic reasons, monster actions are split into many lists. Examples: magic attacks, weapon attacks, natural attacks, utility, magic utility, etc.
   - Monsters will always have a minimum of one action at challenge rating 1, and a maximum of 6 actions at challenge rating 20 (in addition to thematic creature-specific actions).
   - Casters may roll with an additional action in the form of a simple weapon or a natural weapon.
@@ -96,13 +96,13 @@ This is where stuff gets ~~complicated~~ fun.
 
 ## Generating Hit Points
 
-18. Hit points are generated based on the creature's Constitution modifier, archetype, and movement.
+**18. Hit points are generated based on the creature's Constitution modifier, archetype, and movement.**
   - To avoid assigning and rolling hit dice, the actual hit point generation is arbitrary. It seems to mostly check out based on comparisons to SRD monsters.
   - Casters and Monsters with fly speeds have their hit points arbitrarily lowered to adjust for difficulty in hitting the monsters or tanking the damage per round.
 
 ## Generating Legendary Actions
 
-19. If Legendary Actions are selected at the time of Monster generation, three Legendary Actions will be generated.
+**19. If Legendary Actions are selected at the time of Monster generation, three Legendary Actions will be generated.**
   - The first Legendary Action will always be a one-cost Legendary Action.
   - Good-alignment creatures and evil-alignment creatures each have on additional Legendary Action available to select from.
   - Due to the way Actions are generated, low challenge rating monsters may generate the Legendary Action "Use Non-Attack Action" without any non-attack actions to choose from.
